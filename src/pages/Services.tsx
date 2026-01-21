@@ -46,7 +46,10 @@ const Services = () => {
               solutions that exceed expectations.
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-4 relative">
+              {/* Connecting line */}
+              <div className="absolute left-5 top-5 bottom-5 w-0.5 bg-gradient-to-b from-primary/40 via-primary/20 to-primary/40 -z-10" />
+              
               {["Discover", "Design", "Develop", "Deploy", "Optimize"].map((step, index) => (
                 <motion.div
                   key={step}
@@ -54,12 +57,14 @@ const Services = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-4 group cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/30 group-hover:shadow-lg group-hover:shadow-primary/30">
                     {index + 1}
                   </div>
-                  <span className="text-lg font-medium">{step}</span>
+                  <span className="text-lg font-medium transition-all duration-300 group-hover:translate-x-2 group-hover:text-primary">
+                    {step}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -69,30 +74,25 @@ const Services = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="p-8 rounded-2xl glass border border-border/50"
+            className="p-8 rounded-2xl glass border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
           >
             <h3 className="text-2xl font-bold mb-4">Why Our Approach Works</h3>
             <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span>Tailored solutions for your unique challenges</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span>Agile methodology for faster time-to-market</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span>Continuous feedback and iteration</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span>Knowledge transfer and documentation</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span>Post-deployment support and optimization</span>
-              </li>
+              {[
+                "Tailored solutions for your unique challenges",
+                "Agile methodology for faster time-to-market",
+                "Continuous feedback and iteration",
+                "Knowledge transfer and documentation",
+                "Post-deployment support and optimization"
+              ].map((item, index) => (
+                <li 
+                  key={index}
+                  className="flex items-start gap-2 group p-2 -mx-2 rounded-lg transition-all duration-200 hover:bg-primary/5 cursor-default"
+                >
+                  <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+                  <span className="transition-colors duration-200 group-hover:text-foreground">{item}</span>
+                </li>
+              ))}
             </ul>
           </motion.div>
         </div>
