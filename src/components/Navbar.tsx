@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
-import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
+import { Logo } from "./Logo";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -39,19 +39,7 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/">
-          <motion.div
-            className="flex items-center group"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <img 
-              src={logo} 
-              alt="Informatics Consulting & Systems Logo" 
-              className="h-12 w-auto"
-            />
-          </motion.div>
-        </Link>
+        <Logo />
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
