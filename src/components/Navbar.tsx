@@ -31,7 +31,9 @@ export const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-3" : "bg-transparent py-5"
+        scrolled 
+          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 py-3" 
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -47,7 +49,9 @@ export const Navbar = () => {
           </div>
           <div className="hidden sm:flex flex-col">
             <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
-            <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
+            <span className={`text-xs leading-tight transition-colors ${
+              scrolled ? "text-muted-foreground" : "text-white/60"
+            }`}>Consulting & Systems</span>
           </div>
         </motion.a>
 
@@ -56,7 +60,11 @@ export const Navbar = () => {
           {navLinks.map((link) => (
             <Link key={link.name} to={link.href}>
               <motion.span
-                className="text-muted-foreground hover:text-foreground transition-colors relative group inline-block"
+                className={`transition-colors relative group inline-block ${
+                  scrolled 
+                    ? "text-muted-foreground hover:text-foreground" 
+                    : "text-white/80 hover:text-white"
+                }`}
                 whileHover={{ y: -2 }}
               >
                 {link.name}
@@ -78,7 +86,7 @@ export const Navbar = () => {
         <div className="lg:hidden flex items-center gap-2">
           <ThemeToggle />
           <button
-            className="p-2 text-foreground"
+            className={`p-2 transition-colors ${scrolled ? "text-foreground" : "text-white"}`}
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -94,7 +102,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden glass border-t border-border/50"
+            className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border/50"
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, i) => (
