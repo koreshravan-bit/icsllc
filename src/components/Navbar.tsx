@@ -32,8 +32,8 @@ export const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 py-3" 
-          : "bg-transparent py-5"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border py-3" 
+          : "bg-background/50 backdrop-blur-sm py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -49,9 +49,7 @@ export const Navbar = () => {
           </div>
           <div className="hidden sm:flex flex-col">
             <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
-            <span className={`text-xs leading-tight transition-colors ${
-              scrolled ? "text-muted-foreground" : "text-white/60"
-            }`}>Consulting & Systems</span>
+            <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
           </div>
         </motion.a>
 
@@ -60,11 +58,7 @@ export const Navbar = () => {
           {navLinks.map((link) => (
             <Link key={link.name} to={link.href}>
               <motion.span
-                className={`transition-colors relative group inline-block ${
-                  scrolled 
-                    ? "text-muted-foreground hover:text-foreground" 
-                    : "text-white/80 hover:text-white"
-                }`}
+                className="text-muted-foreground hover:text-foreground transition-colors relative group inline-block"
                 whileHover={{ y: -2 }}
               >
                 {link.name}
@@ -86,7 +80,7 @@ export const Navbar = () => {
         <div className="lg:hidden flex items-center gap-2">
           <ThemeToggle />
           <button
-            className={`p-2 transition-colors ${scrolled ? "text-foreground" : "text-white"}`}
+            className="p-2 text-foreground"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
