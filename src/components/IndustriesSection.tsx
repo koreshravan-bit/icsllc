@@ -6,8 +6,7 @@ import {
   ShoppingBag, 
   Wifi, 
   Factory, 
-  Code2,
-  TrendingUp
+  Code2
 } from "lucide-react";
 
 const industries = [
@@ -42,7 +41,7 @@ export const IndustriesSection = () => {
 
         {/* Industries Grid */}
         <StaggerContainer 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
           staggerDelay={0.1}
         >
           {industries.map((industry) => (
@@ -62,70 +61,6 @@ export const IndustriesSection = () => {
           ))}
         </StaggerContainer>
 
-        {/* Case Study Preview */}
-        <AnimatedSection delay={0.4}>
-          <div className="glass-card p-8 md:p-12 overflow-hidden relative">
-            {/* Background gradient */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
-            
-            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10">
-              <div className="flex-1">
-                <span className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-4">
-                  <TrendingUp className="w-4 h-4" />
-                  Featured Case Study
-                </span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  AI-Powered Analytics for Global Banking Leader
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Implemented machine learning models for fraud detection and customer behavior 
-                  analysis, resulting in 40% reduction in fraudulent transactions and 25% 
-                  improvement in customer retention.
-                </p>
-                
-                {/* Stats */}
-                <div className="flex flex-wrap gap-8">
-                  {[
-                    { value: "40%", label: "Fraud Reduction" },
-                    { value: "25%", label: "Retention Boost" },
-                    { value: "$2M", label: "Annual Savings" },
-                  ].map((stat) => (
-                    <div key={stat.label}>
-                      <div className="text-2xl font-bold gradient-text">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Visual Element */}
-              <div className="relative w-full lg:w-80 h-48 lg:h-64">
-                <motion.div
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-glow-purple/20 border border-primary/20"
-                  animate={{ rotate: [0, 1, 0, -1, 0] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                  className="absolute inset-2 rounded-xl bg-gradient-to-br from-surface-elevated to-surface flex items-center justify-center"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="text-center">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center glow"
-                    >
-                      <Building2 className="w-10 h-10 text-primary-foreground" />
-                    </motion.div>
-                    <span className="text-sm text-muted-foreground">Banking & Finance</span>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );
