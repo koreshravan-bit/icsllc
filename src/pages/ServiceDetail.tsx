@@ -130,20 +130,35 @@ const ServiceDetail = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {service.capabilities.map((capability, index) => {
               const CapIcon = capability.icon;
+              const numberDisplay = String(index + 1).padStart(2, '0');
               return (
                 <motion.div
                   key={capability.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors"
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="group relative p-6 rounded-2xl bg-background/80 backdrop-blur-xl border border-border hover:border-primary/50 transition-all duration-300 overflow-hidden"
                 >
-                  <div className="p-2 rounded-lg bg-primary/10 w-fit mb-4">
-                    <CapIcon className="w-5 h-5 text-primary" />
+                  {/* Large gradient number background */}
+                  <div className="absolute -top-4 -right-2 text-8xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors select-none">
+                    {numberDisplay}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{capability.title}</h3>
-                  <p className="text-muted-foreground text-sm">{capability.description}</p>
+                  
+                  {/* Icon with gradient background */}
+                  <div className="relative mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors">
+                      <CapIcon className="w-6 h-6 text-primary" />
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors relative">
+                    {capability.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed relative">
+                    {capability.description}
+                  </p>
                 </motion.div>
               );
             })}
