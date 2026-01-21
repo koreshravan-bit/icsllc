@@ -1,26 +1,26 @@
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpg";
 
 const footerLinks = {
   services: [
-    { name: "AI Consulting", href: "#" },
-    { name: "Data Engineering", href: "#" },
-    { name: "Cloud Solutions", href: "#" },
-    { name: "Digital Transformation", href: "#" },
+    { name: "AI Consulting", href: "/services/ai-consulting" },
+    { name: "Data Engineering", href: "/services/data-engineering" },
+    { name: "Cloud Solutions", href: "/services/cloud-cybersecurity" },
+    { name: "Digital Transformation", href: "/services/project-services" },
   ],
   company: [
-    { name: "About Us", href: "#about" },
-    { name: "Careers", href: "#" },
-    { name: "Case Studies", href: "#" },
-    { name: "Blog", href: "#" },
+    { name: "About Us", href: "/about" },
+    { name: "Careers", href: "/careers" },
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Insights", href: "/insights" },
   ],
   industries: [
-    { name: "Finance", href: "#" },
-    { name: "Healthcare", href: "#" },
-    { name: "Retail", href: "#" },
-    { name: "Technology", href: "#" },
+    { name: "Finance", href: "/industries/financial-services" },
+    { name: "Healthcare", href: "/industries/healthcare" },
+    { name: "Retail", href: "/industries/retail" },
+    { name: "Technology", href: "/industries/technology" },
   ],
 };
 
@@ -41,18 +41,14 @@ export const Footer = () => {
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <Link to="/">
               <motion.div
-                className="flex items-center gap-3 mb-4"
+                className="flex items-center mb-4"
                 whileHover={{ scale: 1.02 }}
               >
                 <img 
                   src={logo} 
                   alt="Informatics Consulting & Systems Logo" 
-                  className="h-10 w-auto"
+                  className="h-12 w-auto"
                 />
-                <div className="flex flex-col">
-                  <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
-                  <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
-                </div>
               </motion.div>
             </Link>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
@@ -78,12 +74,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,12 +90,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -110,12 +106,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.industries.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
