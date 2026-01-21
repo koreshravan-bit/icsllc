@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   services: [
@@ -37,19 +39,22 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
         {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <motion.a
-              href="#"
-              className="flex items-center gap-3 mb-4"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">I</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
-                <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
-              </div>
-            </motion.a>
+            <Link to="/">
+              <motion.div
+                className="flex items-center gap-3 mb-4"
+                whileHover={{ scale: 1.02 }}
+              >
+                <img 
+                  src={logo} 
+                  alt="Informatics Consulting & Systems Logo" 
+                  className="h-10 w-auto"
+                />
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
+                  <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
+                </div>
+              </motion.div>
+            </Link>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
               Empowering businesses through AI and data-driven solutions since 2014.
             </p>

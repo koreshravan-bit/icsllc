@@ -8,42 +8,42 @@
 /* Informatics Consulting & Systems - Premium Tech Consulting Design System */
 
 @layer base {
-  /* Light theme */
+  /* Light theme - Navy/Teal/Purple palette matching logo */
   :root {
-    --background: 240 4% 95%;
-    --foreground: 240 5% 10%;
+    --background: 210 25% 96%;
+    --foreground: 215 50% 15%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 240 5% 10%;
+    --card: 0 0% 99%;
+    --card-foreground: 215 50% 15%;
 
-    --popover: 240 5% 90%;
-    --popover-foreground: 240 5% 10%;
+    --popover: 210 20% 92%;
+    --popover-foreground: 215 50% 15%;
 
-    --primary: 258 89% 66%;
-    --primary-foreground: 250 100% 97%;
+    --primary: 215 70% 40%;
+    --primary-foreground: 210 100% 98%;
 
-    --secondary: 240 5% 33%;
+    --secondary: 215 30% 35%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 4% 83%;
-    --muted-foreground: 240 5% 10%;
+    --muted: 210 20% 85%;
+    --muted-foreground: 215 30% 40%;
 
-    --accent: 269 100% 98%;
-    --accent-foreground: 270 91% 65%;
+    --accent: 175 60% 95%;
+    --accent-foreground: 175 80% 30%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 240 4% 83%;
-    --input: 240 4% 83%;
-    --ring: 258 89% 66%;
+    --border: 210 20% 82%;
+    --input: 210 20% 82%;
+    --ring: 215 70% 40%;
 
     --radius: 0.5rem;
 
-    /* Custom brand colors - light mode */
-    --glow: 187 100% 42%;
-    --glow-purple: 265 100% 55%;
-    --surface: 210 40% 96%;
+    /* Custom brand colors - light mode (navy/teal/purple) */
+    --glow: 175 80% 42%;
+    --glow-purple: 270 85% 55%;
+    --surface: 210 30% 97%;
     --surface-elevated: 0 0% 100%;
 
     --sidebar-background: 0 0% 100%;
@@ -75,41 +75,41 @@
     --spacing: 0.25rem;
   }
 
-  /* Dark theme */
+  /* Dark theme - Navy/Teal/Purple palette matching logo */
   .dark {
-    --background: 240 5% 10%;
+    --background: 215 45% 8%;
     --foreground: 0 0% 98%;
 
-    --card: 240 3% 15%;
+    --card: 215 40% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 5% 26%;
+    --popover: 215 35% 18%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 255 91% 76%;
-    --primary-foreground: 261 72% 22%;
+    --primary: 175 75% 55%;
+    --primary-foreground: 215 50% 10%;
 
-    --secondary: 240 3% 46%;
+    --secondary: 210 30% 45%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3% 46%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 215 25% 30%;
+    --muted-foreground: 210 20% 75%;
 
-    --accent: 273 86% 20%;
-    --accent-foreground: 270 95% 75%;
+    --accent: 270 70% 25%;
+    --accent-foreground: 270 90% 80%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 240 5% 33%;
-    --input: 240 5% 33%;
-    --ring: 255 91% 76%;
+    --border: 215 30% 22%;
+    --input: 215 30% 22%;
+    --ring: 175 75% 55%;
 
-    /* Custom brand colors - dark mode */
-    --glow: 187 100% 50%;
-    --glow-purple: 265 100% 65%;
-    --surface: 222 47% 10%;
-    --surface-elevated: 222 47% 12%;
+    /* Custom brand colors - dark mode (navy/teal/purple) */
+    --glow: 175 85% 50%;
+    --glow-purple: 270 90% 65%;
+    --surface: 215 45% 10%;
+    --surface-elevated: 215 40% 14%;
 
     --sidebar-background: 222 47% 8%;
     --sidebar-foreground: 0 0% 98%;
