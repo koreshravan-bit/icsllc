@@ -22,7 +22,28 @@ import {
   Package,
   LineChart,
   FileText,
-  Bot
+  Bot,
+  RefreshCw,
+  Scale,
+  UserCircle,
+  AlertTriangle,
+  Swords,
+  Link2,
+  ClipboardCheck,
+  Accessibility,
+  Clock,
+  FlaskConical,
+  Database,
+  MapPin,
+  Sparkles,
+  ShieldCheck,
+  Layers,
+  Gauge,
+  Leaf,
+  Building,
+  Signal,
+  DollarSign,
+  Play
 } from "lucide-react";
 
 export const industryDetails = {
@@ -44,11 +65,11 @@ export const industryDetails = {
       { icon: Shield, title: "Cybersecurity Solutions", description: "Zero-trust architecture and advanced threat protection" }
     ],
     challenges: [
-      "Legacy system modernization without service disruption",
-      "Meeting evolving regulatory requirements across jurisdictions",
-      "Delivering personalized experiences at scale",
-      "Protecting against sophisticated cyber threats",
-      "Competing with agile fintech disruptors"
+      { title: "Legacy Modernization", description: "Modernize core banking systems without disrupting daily operations or customer service", icon: RefreshCw },
+      { title: "Regulatory Compliance", description: "Navigate evolving regulations across multiple jurisdictions while maintaining agility", icon: Scale },
+      { title: "Personalization at Scale", description: "Deliver tailored financial products and experiences to millions of customers", icon: UserCircle },
+      { title: "Cyber Threat Protection", description: "Defend against sophisticated attacks targeting financial data and transactions", icon: AlertTriangle },
+      { title: "Fintech Competition", description: "Compete with agile digital-native disruptors reshaping customer expectations", icon: Swords }
     ],
     stats: [
       { value: "50+", label: "Financial Clients" },
@@ -75,11 +96,11 @@ export const industryDetails = {
       { icon: Target, title: "Patient Engagement", description: "Digital tools that empower patients in their care journey" }
     ],
     challenges: [
-      "Integrating siloed healthcare data systems",
-      "Maintaining HIPAA and regulatory compliance",
-      "Improving patient access and engagement",
-      "Reducing administrative burden on clinicians",
-      "Accelerating clinical research timelines"
+      { title: "Data Integration", description: "Connect fragmented healthcare systems and siloed patient data across providers", icon: Link2 },
+      { title: "HIPAA Compliance", description: "Maintain strict regulatory compliance while enabling data-driven care", icon: ClipboardCheck },
+      { title: "Patient Access", description: "Improve healthcare accessibility and meaningful patient engagement", icon: Accessibility },
+      { title: "Clinician Burnout", description: "Reduce administrative burden so clinicians can focus on patient care", icon: Clock },
+      { title: "Research Acceleration", description: "Shorten clinical research timelines while maintaining rigorous standards", icon: FlaskConical }
     ],
     stats: [
       { value: "30+", label: "Healthcare Clients" },
@@ -106,11 +127,11 @@ export const industryDetails = {
       { icon: Smartphone, title: "Mobile Commerce", description: "Native apps and PWAs for mobile-first shopping" }
     ],
     challenges: [
-      "Unifying customer data across channels",
-      "Managing complex omnichannel fulfillment",
-      "Personalizing experiences at scale",
-      "Competing on speed and convenience",
-      "Balancing online and physical retail investments"
+      { title: "Customer Data Unification", description: "Create unified customer profiles from fragmented touchpoints and channels", icon: Database },
+      { title: "Omnichannel Fulfillment", description: "Manage complex inventory and delivery across multiple fulfillment channels", icon: MapPin },
+      { title: "Personalization at Scale", description: "Deliver relevant, personalized experiences to millions of shoppers", icon: Sparkles },
+      { title: "Speed & Convenience", description: "Meet rising expectations for instant gratification and seamless service", icon: Zap },
+      { title: "Channel Balance", description: "Optimize investments between digital commerce and physical retail presence", icon: Layers }
     ],
     stats: [
       { value: "40+", label: "Retail Clients" },
@@ -137,11 +158,11 @@ export const industryDetails = {
       { icon: TrendingUp, title: "Performance Optimization", description: "Scalability improvements and technical debt reduction" }
     ],
     challenges: [
-      "Scaling engineering teams quickly",
-      "Maintaining velocity while improving quality",
-      "Modernizing technical architecture",
-      "Building for global scale and performance",
-      "Attracting and retaining technical talent"
+      { title: "Rapid Team Scaling", description: "Expand engineering capacity quickly without sacrificing team culture or quality", icon: Users },
+      { title: "Velocity vs Quality", description: "Maintain development speed while continuously improving code quality", icon: Gauge },
+      { title: "Architecture Modernization", description: "Evolve technical architecture to support growth without major disruptions", icon: RefreshCw },
+      { title: "Global Scale", description: "Build systems that perform reliably for users across the world", icon: Globe },
+      { title: "Talent Retention", description: "Attract and retain top technical talent in a competitive market", icon: UserCircle }
     ],
     stats: [
       { value: "60+", label: "Tech Clients" },
@@ -168,11 +189,11 @@ export const industryDetails = {
       { icon: Package, title: "Warehouse Optimization", description: "WMS integration and fulfillment automation" }
     ],
     challenges: [
-      "Connecting legacy equipment and systems",
-      "Achieving end-to-end supply chain visibility",
-      "Reducing unplanned downtime",
-      "Meeting sustainability and compliance requirements",
-      "Scaling digital initiatives across facilities"
+      { title: "Legacy Equipment", description: "Connect aging industrial equipment to modern digital systems and platforms", icon: Cog },
+      { title: "Supply Chain Visibility", description: "Achieve real-time visibility across complex, multi-tier supply chains", icon: Truck },
+      { title: "Unplanned Downtime", description: "Predict and prevent equipment failures before they impact production", icon: AlertTriangle },
+      { title: "Sustainability Goals", description: "Meet environmental regulations and sustainability targets cost-effectively", icon: Leaf },
+      { title: "Digital Scale-up", description: "Scale successful digital initiatives across multiple facilities globally", icon: Building }
     ],
     stats: [
       { value: "35+", label: "Manufacturing Clients" },
@@ -199,11 +220,11 @@ export const industryDetails = {
       { icon: TrendingUp, title: "Revenue Management", description: "Billing, rating, and revenue assurance platforms" }
     ],
     challenges: [
-      "Modernizing legacy BSS/OSS systems",
-      "Managing network complexity and costs",
-      "Reducing customer churn",
-      "Monetizing 5G and new services",
-      "Competing with OTT providers"
+      { title: "BSS/OSS Modernization", description: "Transform legacy business and operations support systems without service disruption", icon: RefreshCw },
+      { title: "Network Complexity", description: "Manage increasingly complex network infrastructure while controlling costs", icon: Signal },
+      { title: "Customer Retention", description: "Reduce churn through improved experiences and personalized offerings", icon: Users },
+      { title: "5G Monetization", description: "Develop compelling use cases and revenue streams for 5G investments", icon: DollarSign },
+      { title: "OTT Competition", description: "Compete effectively with over-the-top service providers for customer attention", icon: Play }
     ],
     stats: [
       { value: "25+", label: "Telecom Clients" },

@@ -154,30 +154,54 @@ const ServiceDetail = () => {
       {/* Benefits Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
+          <div className="max-w-6xl mx-auto">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl font-bold mb-12 text-center"
+              className="text-center mb-16"
             >
-              Why Choose Us
-            </motion.h2>
+              <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                The advantages of partnering with our expert team
+              </p>
+            </motion.div>
 
-            <div className="space-y-4">
-              {service.benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors"
-                >
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <p className="text-foreground">{benefit}</p>
-                </motion.div>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {service.benefits.map((benefit, index) => {
+                const BenefitIcon = benefit.icon;
+                const numberDisplay = String(index + 1).padStart(2, '0');
+                return (
+                  <motion.div
+                    key={benefit.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="group relative p-6 rounded-2xl bg-muted/30 backdrop-blur-xl border border-border hover:border-primary/50 transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Large gradient number background */}
+                    <div className="absolute -top-4 -right-2 text-8xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors select-none">
+                      {numberDisplay}
+                    </div>
+                    
+                    {/* Icon with gradient background */}
+                    <div className="relative mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors">
+                        <BenefitIcon className="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors relative">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed relative">
+                      {benefit.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
