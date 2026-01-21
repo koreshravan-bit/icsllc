@@ -79,13 +79,23 @@ export const CTASection = () => {
               transition={{ delay: 0.4 }}
               className="mt-12 pt-8 border-t border-border/50 flex flex-wrap justify-center gap-8"
             >
-              <a href="mailto:contact@informaticsconsulting.com" className="text-muted-foreground hover:text-primary transition-colors">
+              <motion.a 
+                href="mailto:contact@informaticsconsulting.com" 
+                className="text-muted-foreground hover:text-primary transition-all duration-300 px-3 py-1 rounded-lg hover:bg-primary/5"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 contact@informaticsconsulting.com
-              </a>
+              </motion.a>
               <span className="text-border">|</span>
-              <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
+              <motion.a 
+                href="tel:+1234567890" 
+                className="text-muted-foreground hover:text-primary transition-all duration-300 px-3 py-1 rounded-lg hover:bg-primary/5"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 +1 (234) 567-890
-              </a>
+              </motion.a>
             </motion.div>
           </div>
         </AnimatedSection>

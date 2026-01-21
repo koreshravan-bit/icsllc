@@ -88,12 +88,17 @@ export const HeroSection = () => {
               { value: "98%", label: "Client Satisfaction" },
               { value: "10+", label: "Years Experience" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">
+              <motion.div 
+                key={stat.label} 
+                className="text-center group cursor-default"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
+                <div className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">{stat.label}</div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

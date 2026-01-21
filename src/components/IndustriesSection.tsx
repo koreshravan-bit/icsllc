@@ -50,9 +50,13 @@ export const IndustriesSection = () => {
                 whileHover={{ y: -5, scale: 1.05 }}
                 className="glass-card p-6 text-center group cursor-pointer hover:border-primary/30 transition-all"
               >
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${industry.color} flex items-center justify-center mx-auto mb-4 opacity-80 group-hover:opacity-100 group-hover:glow-sm transition-all`}>
-                  <industry.icon className="w-8 h-8 text-white" />
-                </div>
+                <motion.div 
+                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${industry.color} flex items-center justify-center mx-auto mb-4 opacity-80 group-hover:opacity-100 group-hover:glow-sm transition-all`}
+                  whileHover={{ rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <industry.icon className="w-8 h-8 text-white transition-transform duration-300 group-hover:scale-110" />
+                </motion.div>
                 <h3 className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                   {industry.name}
                 </h3>
