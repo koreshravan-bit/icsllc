@@ -56,12 +56,9 @@ export const Navbar = () => {
           ))}
         </nav>
 
-        {/* CTA Button & Theme Toggle */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Theme Toggle */}
+        <div className="hidden lg:flex items-center">
           <ThemeToggle />
-          <Button variant="hero" size="lg">
-            Get Started
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -103,9 +100,6 @@ export const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
-              <Button variant="hero" className="mt-4 w-full" asChild>
-                <Link to="/contact">Get Started</Link>
-              </Button>
             </nav>
           </motion.div>
         )}
