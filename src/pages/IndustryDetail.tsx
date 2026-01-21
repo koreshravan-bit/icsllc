@@ -154,30 +154,51 @@ const IndustryDetail = () => {
       {/* Challenges Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
+          <div className="max-w-6xl mx-auto">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl font-bold mb-12 text-center"
+              className="text-center mb-16"
             >
-              Challenges We Address
-            </motion.h2>
+              <h2 className="text-3xl font-bold mb-4">Challenges We Address</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Industry-specific obstacles we help you overcome
+              </p>
+            </motion.div>
 
-            <div className="space-y-4">
-              {industry.challenges.map((challenge, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors"
-                >
-                  <AlertCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <p className="text-foreground">{challenge}</p>
-                </motion.div>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {industry.challenges.map((challenge, index) => {
+                const ChallengeIcon = challenge.icon;
+                return (
+                  <motion.div
+                    key={challenge.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="group relative p-6 rounded-2xl bg-muted/30 backdrop-blur-xl border border-border hover:border-primary/50 transition-all duration-300"
+                  >
+                    {/* Left accent gradient line */}
+                    <div className="absolute left-0 top-4 bottom-4 w-1 rounded-full bg-gradient-to-b from-primary via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Icon with gradient background */}
+                    <div className="relative mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors">
+                        <ChallengeIcon className="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {challenge.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {challenge.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
