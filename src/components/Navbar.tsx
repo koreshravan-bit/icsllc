@@ -64,12 +64,19 @@ export const Navbar = () => {
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center gap-2">
           <ThemeToggle />
-          <button
-            className="p-2 text-foreground"
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 text-foreground rounded-lg hover:bg-surface-elevated transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <motion.div
+              animate={{ rotate: isOpen ? 90 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
+          </motion.button>
         </div>
       </div>
 

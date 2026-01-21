@@ -105,15 +105,20 @@ export const AboutSection = () => {
                     key={item.title}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.08 }}
                     transition={{ delay: 0.5 + i * 0.1 }}
                     viewport={{ once: true }}
-                    className="text-center"
+                    className="text-center cursor-pointer group"
                   >
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center mx-auto mb-3 glow-sm">
-                      <item.icon className="w-7 h-7 text-primary-foreground" />
-                    </div>
-                    <div className="text-2xl font-bold gradient-text">{item.value}</div>
-                    <div className="text-sm text-muted-foreground">{item.title}</div>
+                    <motion.div 
+                      className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center mx-auto mb-3 glow-sm transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/40"
+                      whileHover={{ rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <item.icon className="w-7 h-7 text-primary-foreground transition-transform duration-300 group-hover:scale-110" />
+                    </motion.div>
+                    <div className="text-2xl font-bold gradient-text transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]">{item.value}</div>
+                    <div className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">{item.title}</div>
                   </motion.div>
                 ))}
               </div>
