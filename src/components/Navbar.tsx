@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -38,20 +39,23 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <motion.a
-          href="#"
-          className="flex items-center gap-3 group"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center glow-sm">
-            <span className="text-primary-foreground font-bold text-xl">I</span>
-          </div>
-          <div className="hidden sm:flex flex-col">
-            <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
-            <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
-          </div>
-        </motion.a>
+        <Link to="/">
+          <motion.div
+            className="flex items-center gap-3 group"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <img 
+              src={logo} 
+              alt="Informatics Consulting & Systems Logo" 
+              className="h-10 w-auto"
+            />
+            <div className="hidden sm:flex flex-col">
+              <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
+              <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
