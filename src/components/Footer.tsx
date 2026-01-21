@@ -35,19 +35,20 @@ export const Footer = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-          {/* Brand */}
+        {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <motion.a
               href="#"
-              className="flex items-center gap-2 mb-4"
+              className="flex items-center gap-3 mb-4"
               whileHover={{ scale: 1.02 }}
             >
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">IC</span>
+                <span className="text-primary-foreground font-bold text-xl">I</span>
               </div>
-              <span className="text-lg font-semibold">
-                Informatics <span className="text-primary">Consulting</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
+                <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
+              </div>
             </motion.a>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
               Empowering businesses through AI and data-driven solutions since 2014.

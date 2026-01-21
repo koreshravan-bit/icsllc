@@ -5,8 +5,56 @@
 /* Informatics Consulting & Systems - Premium Tech Consulting Design System */
 
 @layer base {
+  /* Light theme */
   :root {
-    /* Dark sophisticated tech theme */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 187 80% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 265 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 187 80% 42%;
+
+    --radius: 0.75rem;
+
+    /* Custom brand colors - light mode */
+    --glow: 187 100% 42%;
+    --glow-purple: 265 100% 55%;
+    --surface: 210 40% 96%;
+    --surface-elevated: 0 0% 100%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 187 80% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 187 80% 42%;
+  }
+
+  /* Dark theme */
+  .dark {
     --background: 222 47% 6%;
     --foreground: 210 40% 96%;
 
@@ -35,9 +83,7 @@
     --input: 222 30% 15%;
     --ring: 187 80% 50%;
 
-    --radius: 0.75rem;
-
-    /* Custom brand colors */
+    /* Custom brand colors - dark mode */
     --glow: 187 100% 50%;
     --glow-purple: 265 100% 65%;
     --surface: 222 47% 10%;

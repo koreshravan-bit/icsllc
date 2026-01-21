@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "#hero" },
@@ -36,16 +37,17 @@ export const Navbar = () => {
         {/* Logo */}
         <motion.a
           href="#"
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-3 group"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-glow-purple flex items-center justify-center glow-sm">
-            <span className="text-primary-foreground font-bold text-lg">IC</span>
+            <span className="text-primary-foreground font-bold text-xl">I</span>
           </div>
-          <span className="text-lg font-semibold text-foreground hidden sm:block">
-            Informatics <span className="text-primary">Consulting</span>
-          </span>
+          <div className="hidden sm:flex flex-col">
+            <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
+            <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
+          </div>
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -63,20 +65,24 @@ export const Navbar = () => {
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden lg:block">
+        {/* CTA Button & Theme Toggle */}
+        <div className="hidden lg:flex items-center gap-3">
+          <ThemeToggle />
           <Button variant="hero" size="lg">
             Get Started
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden p-2 text-foreground"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
