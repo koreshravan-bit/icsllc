@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import { Logo } from "./Logo";
 
 const footerLinks = {
   services: [
@@ -37,18 +37,9 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
         {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <Link to="/">
-              <motion.div
-                className="flex items-center mb-4"
-                whileHover={{ scale: 1.02 }}
-              >
-                <img 
-                  src={logo} 
-                  alt="Informatics Consulting & Systems Logo" 
-                  className="h-12 w-auto"
-                />
-              </motion.div>
-            </Link>
+            <div className="mb-4">
+              <Logo />
+            </div>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
               Empowering businesses through AI and data-driven solutions since 2014.
             </p>
