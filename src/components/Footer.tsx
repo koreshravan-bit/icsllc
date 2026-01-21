@@ -110,7 +110,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 Informatics Consulting & Systems. All rights reserved.
+            © {new Date().getFullYear()} Informatics Consulting & Systems. All rights reserved.
           </p>
           
           {/* Social links */}

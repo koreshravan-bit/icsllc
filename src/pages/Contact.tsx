@@ -1,9 +1,9 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { ContactForm } from "@/components/shared/ContactForm";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Linkedin, Twitter, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const contactInfo = [
   {
@@ -11,24 +11,28 @@ const contactInfo = [
     title: "Email Us",
     value: "contact@informaticsconsulting.com",
     href: "mailto:contact@informaticsconsulting.com",
+    description: "We typically respond within 24 hours",
   },
   {
     icon: Phone,
     title: "Call Us",
     value: "+1 (234) 567-890",
     href: "tel:+1234567890",
+    description: "Speak directly with our team",
   },
   {
     icon: MapPin,
     title: "Visit Us",
     value: "123 Tech Hub, Innovation City, IC 12345",
     href: null,
+    description: "Our headquarters location",
   },
   {
     icon: Clock,
     title: "Business Hours",
     value: "Mon - Fri: 9:00 AM - 6:00 PM",
     href: null,
+    description: "Eastern Time Zone (ET)",
   },
 ];
 
@@ -61,33 +65,53 @@ const Contact = () => {
         icon={Mail}
       />
 
-      {/* Main Content */}
+      {/* Main CTA Section */}
       <PageSection>
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="p-8 rounded-2xl glass border border-border/50">
-              <h2 className="text-2xl font-bold mb-2">Send Us a Message</h2>
-              <p className="text-muted-foreground mb-8">
-                Fill out the form below and we'll get back to you within 24 hours.
-              </p>
-              <ContactForm />
+        <div className="max-w-4xl mx-auto">
+          {/* Primary Contact Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="p-8 md:p-12 rounded-2xl glass border border-border/50 text-center mb-12"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+              Our team of experts is ready to help you leverage AI and data-driven solutions. 
+              Send us an email or give us a call to get started.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="xl" asChild className="group">
+                <a href="mailto:contact@informaticsconsulting.com">
+                  <Mail className="w-5 h-5 mr-2" />
+                  Email Us
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
+                <a href="tel:+1234567890">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call Us
+                </a>
+              </Button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
+          {/* Contact Info Grid */}
+          <div className="grid sm:grid-cols-2 gap-6">
             {contactInfo.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-xl glass border border-border/50"
+                className="group p-6 rounded-xl glass border border-border/50 hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -95,37 +119,53 @@ const Contact = () => {
                     {item.href ? (
                       <a 
                         href={item.href} 
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-foreground hover:text-primary transition-colors font-medium"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-muted-foreground">{item.value}</p>
+                      <p className="text-foreground font-medium">{item.value}</p>
                     )}
+                    <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
-
-            {/* Social Links */}
-            <div className="p-6 rounded-xl glass border border-border/50">
-              <h3 className="font-semibold mb-4">Follow Us</h3>
-              <div className="flex gap-3">
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-colors"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
           </div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 p-6 rounded-xl glass border border-border/50 text-center"
+          >
+            <h3 className="font-semibold mb-4">Connect With Us</h3>
+            <div className="flex gap-3 justify-center">
+              <motion.a 
+                href="#" 
+                whileHover={{ y: -2, scale: 1.1 }}
+                className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </motion.a>
+              <motion.a 
+                href="#" 
+                whileHover={{ y: -2, scale: 1.1 }}
+                className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
+              </motion.a>
+              <motion.a 
+                href="mailto:contact@informaticsconsulting.com" 
+                whileHover={{ y: -2, scale: 1.1 }}
+                className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
       </PageSection>
 
@@ -146,14 +186,16 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 rounded-2xl bg-background/50 border border-border/50 text-center"
+              className="group p-6 rounded-2xl bg-background/50 border border-border/50 text-center hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{office.city}</h3>
               <p className="text-sm text-muted-foreground mb-2">{office.address}</p>
-              <p className="text-sm text-primary">{office.phone}</p>
+              <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="text-sm text-primary hover:underline">
+                {office.phone}
+              </a>
             </motion.div>
           ))}
         </div>
