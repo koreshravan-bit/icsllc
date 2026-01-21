@@ -7,7 +7,9 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
 import Industries from "./pages/Industries";
+import IndustryDetail from "./pages/IndustryDetail";
 import Contact from "./pages/Contact";
 import CaseStudies from "./pages/CaseStudies";
 import Insights from "./pages/Insights";
@@ -27,7 +29,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/industries" element={<Industries />} />
+            <Route path="/industries/:industryId" element={<IndustryDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/insights" element={<Insights />} />
