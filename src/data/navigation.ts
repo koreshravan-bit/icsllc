@@ -116,8 +116,5 @@ export const mainNavLinks = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services", hasDropdown: true },
   { name: "Industries", href: "/industries", hasDropdown: true },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "Insights", href: "/insights" },
-  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
