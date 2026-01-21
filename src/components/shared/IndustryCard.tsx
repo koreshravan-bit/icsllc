@@ -19,7 +19,7 @@ export const IndustryCard = ({ name, description, icon: Icon, href, index = 0 }:
       transition={{ delay: index * 0.1, duration: 0.5 }}
     >
       <Link to={href} className="block group">
-        <div className="h-full p-6 rounded-2xl glass border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 relative overflow-hidden">
+        <div className="h-full p-6 rounded-2xl glass border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 relative overflow-hidden">
           {/* Background gradient on hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-glow-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           

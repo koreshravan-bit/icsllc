@@ -57,12 +57,16 @@ export const CTASection = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button variant="hero" size="xl" className="group">
-                  Request Consultation
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Button variant="hero" size="xl" className="group" asChild>
+                  <a href="mailto:contact@informaticsconsulting.com">
+                    Request Consultation
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </Button>
-                <Button variant="outline" size="xl">
-                  View Case Studies
+                <Button variant="outline" size="xl" asChild>
+                  <a href="/services">
+                    Explore Services
+                  </a>
                 </Button>
               </div>
             </motion.div>
