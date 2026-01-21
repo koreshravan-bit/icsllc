@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },

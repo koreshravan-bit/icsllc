@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   services: [
