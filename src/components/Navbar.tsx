@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Industries", href: "#industries" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Industries", href: "/industries" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export const Navbar = () => {
@@ -53,15 +54,15 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors relative group"
-              whileHover={{ y: -2 }}
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-            </motion.a>
+            <Link key={link.name} to={link.href}>
+              <motion.span
+                className="text-muted-foreground hover:text-foreground transition-colors relative group inline-block"
+                whileHover={{ y: -2 }}
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </motion.span>
+            </Link>
           ))}
         </nav>
 
@@ -97,20 +98,23 @@ export const Navbar = () => {
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, i) => (
-                <motion.a
+                <motion.div
                   key={link.name}
-                  href={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="text-muted-foreground hover:text-foreground py-2 transition-colors"
-                  onClick={() => setIsOpen(false)}
                 >
-                  {link.name}
-                </motion.a>
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-foreground py-2 transition-colors block"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <Button variant="hero" className="mt-4 w-full">
-                Get Started
+              <Button variant="hero" className="mt-4 w-full" asChild>
+                <Link to="/contact">Get Started</Link>
               </Button>
             </nav>
           </motion.div>
