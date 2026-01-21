@@ -34,7 +34,7 @@ export const HeroSection = () => {
       {floatingIcons.map(({ Icon, delay, x, y }, i) => (
         <motion.div
           key={i}
-          className="absolute text-primary/20"
+          className="absolute text-white/20"
           style={{ left: x, top: y }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -77,10 +77,10 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-lg mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-white/80">
               AI-Powered Business Solutions
             </span>
           </motion.div>
@@ -90,7 +90,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white"
           >
             Empowering Business Through{" "}
             <span className="gradient-text glow-text">AI & Data</span>
@@ -101,7 +101,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10"
           >
             Drive innovation, efficiency, and growth with our expert consulting services 
             in AI, data engineering, cloud solutions, and digital transformation.
@@ -118,7 +118,7 @@ export const HeroSection = () => {
               Book a Free Consultation
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="xl">
+            <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10 hover:border-white/50">
               Explore Our Services
             </Button>
           </motion.div>
@@ -128,7 +128,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-border/50"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-white/20"
           >
             {[
               { value: "150+", label: "Clients Worldwide" },
@@ -146,7 +146,7 @@ export const HeroSection = () => {
                 <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-sm text-white/60">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
