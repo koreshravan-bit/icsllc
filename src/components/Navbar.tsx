@@ -4,13 +4,16 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpg";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Industries", href: "/industries" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Insights", href: "/insights" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -41,19 +44,15 @@ export const Navbar = () => {
         {/* Logo */}
         <Link to="/">
           <motion.div
-            className="flex items-center gap-3 group"
+            className="flex items-center group"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <img 
               src={logo} 
               alt="Informatics Consulting & Systems Logo" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
-            <div className="hidden sm:flex flex-col">
-              <span className="text-lg font-bold gradient-text leading-tight">Informatics</span>
-              <span className="text-xs text-muted-foreground leading-tight">Consulting & Systems</span>
-            </div>
           </motion.div>
         </Link>
 
