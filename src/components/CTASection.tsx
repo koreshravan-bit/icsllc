@@ -58,7 +58,7 @@ export const CTASection = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button variant="hero" size="xl" className="group" asChild>
-                  <a href="mailto:contact@informaticsconsulting.com">
+                  <a href="mailto:contact@icsllc.ai">
                     Request Consultation
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
@@ -80,12 +80,12 @@ export const CTASection = () => {
               className="mt-12 pt-8 border-t border-border/50 flex flex-wrap justify-center gap-8"
             >
               <motion.a 
-                href="mailto:contact@informaticsconsulting.com" 
+                href="mailto:contact@icsllc.ai" 
                 className="text-muted-foreground hover:text-primary transition-all duration-300 px-3 py-1 rounded-lg hover:bg-primary/5"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                contact@informaticsconsulting.com
+                contact@icsllc.ai
               </motion.a>
               <span className="text-border">|</span>
               <motion.a 

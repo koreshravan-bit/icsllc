@@ -25,7 +25,7 @@ const footerLinks = {
 const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Mail, href: "mailto:contact@informaticsconsulting.com", label: "Email" },
+  { icon: Mail, href: "mailto:contact@icsllc.ai", label: "Email" },
 ];
 
 export const Footer = () => {
