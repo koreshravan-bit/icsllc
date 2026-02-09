@@ -8,6 +8,21 @@
     <meta name="author" content="Informatics Consulting & Systems" />
     <link rel="icon" type="image/png" href="/favicon.png" />
 
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function(){
+        var l = window.location;
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s){
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })();
+    </script>
+
     <meta property="og:title" content="Informatics Consulting & Systems" />
     <meta property="og:description" content="Empowering businesses through AI and data-driven solutions." />
     <meta property="og:type" content="website" />
