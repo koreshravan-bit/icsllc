@@ -58,16 +58,14 @@ function mapEntry(item: any, includes: any): ContentfulPost {
 
 export async function getAllInsights(): Promise<ContentfulPost[]> {
   if (!isConfigured()) return [];
-  const [blogs, news, press] = await Promise.all([
+  const [blogs, news] = await Promise.all([
     fetchEntries("blogPost"),
     fetchEntries("newsArticle"),
-    fetchEntries("pressRelease"),
   ]);
 
   const all = [
     ...blogs.items.map((i: any) => mapEntry(i, blogs.includes)),
     ...news.items.map((i: any) => mapEntry(i, news.includes)),
-    ...press.items.map((i: any) => mapEntry(i, press.includes)),
   ].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
   return all;
