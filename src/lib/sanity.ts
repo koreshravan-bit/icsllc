@@ -2,7 +2,7 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 // TODO: Replace these with your actual Sanity project values
-const SANITY_PROJECT_ID = "YOUR_PROJECT_ID";
+const SANITY_PROJECT_ID = "m1m9buls";
 const SANITY_DATASET = "production";
 
 export const sanityClient = createClient({
@@ -81,5 +81,5 @@ export async function getPostBySlug(type: string, slug: string): Promise<SanityP
 }
 
 export function isConfigured(): boolean {
-  return SANITY_PROJECT_ID !== "YOUR_PROJECT_ID";
+  return SANITY_PROJECT_ID.length > 0;
 }
