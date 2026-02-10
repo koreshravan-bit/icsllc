@@ -1,6 +1,6 @@
 // Replace these with your Contentful Space ID and Content Delivery API token
-const CONTENTFUL_SPACE_ID = "";
-const CONTENTFUL_ACCESS_TOKEN = "";
+const CONTENTFUL_SPACE_ID = "jxvlv4w2gttw";
+const CONTENTFUL_ACCESS_TOKEN = "S8XbZPeTUyxTpYpIgzbA4KKfouk1vlsL8IaDzxIGcUc";
 
 const BASE_URL = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master`;
 
