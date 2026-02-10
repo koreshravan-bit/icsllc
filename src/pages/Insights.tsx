@@ -86,11 +86,10 @@ const Insights = () => {
         />
         <PageSection>
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-4 mb-8">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">
               <TabsTrigger value="all">All</TabsTrigger>
               <TabsTrigger value="blog">Blog</TabsTrigger>
               <TabsTrigger value="news">News</TabsTrigger>
-              <TabsTrigger value="press">Press</TabsTrigger>
             </TabsList>
             <TabsContent value={activeTab}>
               {renderContent()}
