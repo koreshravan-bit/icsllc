@@ -11,7 +11,6 @@ import { getPostBySlug, isConfigured } from "@/lib/contentful";
 const typeMap: Record<string, { contentfulType: string; label: string; icon: any }> = {
   blog: { contentfulType: "blogPost", label: "Blog", icon: PenLine },
   news: { contentfulType: "newsArticle", label: "News", icon: Newspaper },
-  press: { contentfulType: "pressRelease", label: "Press Release", icon: FileText },
 };
 
 const InsightDetail = () => {
