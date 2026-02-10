@@ -20,7 +20,7 @@ const Insights = () => {
       activeTab === "all"
         ? getAllInsights()
         : getInsightsByType(
-            activeTab === "blog" ? "blogPost" : activeTab === "news" ? "newsArticle" : "pressRelease"
+            activeTab === "blog" ? "blogPost" : "newsArticle"
           ),
     enabled: configured,
   });

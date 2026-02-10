@@ -79,16 +79,14 @@ export async function getInsightsByType(type: string): Promise<ContentfulPost[]>
 
 export async function getLatestInsights(limit = 3): Promise<ContentfulPost[]> {
   if (!isConfigured()) return [];
-  const [blogs, news, press] = await Promise.all([
+  const [blogs, news] = await Promise.all([
     fetchEntries("blogPost", limit),
     fetchEntries("newsArticle", limit),
-    fetchEntries("pressRelease", limit),
   ]);
 
   return [
     ...blogs.items.map((i: any) => mapEntry(i, blogs.includes)),
     ...news.items.map((i: any) => mapEntry(i, news.includes)),
-    ...press.items.map((i: any) => mapEntry(i, press.includes)),
   ]
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, limit);

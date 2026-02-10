@@ -7,7 +7,6 @@ import { ContentfulPost } from "@/lib/contentful";
 const typeConfig = {
   blogPost: { label: "Blog", icon: PenLine, route: "blog", color: "text-primary" },
   newsArticle: { label: "News", icon: Newspaper, route: "news", color: "text-[hsl(var(--glow))]" },
-  pressRelease: { label: "Press Release", icon: FileText, route: "press", color: "text-[hsl(var(--glow-purple))]" },
 };
 
 interface InsightCardProps {
