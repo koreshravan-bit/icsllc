@@ -1,18 +1,10 @@
-import { createClient, Entry, Asset } from "contentful";
-
-// Replace these with your Contentful Space ID and Delivery API token
+// Replace these with your Contentful Space ID and Content Delivery API token
 const CONTENTFUL_SPACE_ID = "";
 const CONTENTFUL_ACCESS_TOKEN = "";
 
-const client =
-  CONTENTFUL_SPACE_ID && CONTENTFUL_ACCESS_TOKEN
-    ? createClient({
-        space: CONTENTFUL_SPACE_ID,
-        accessToken: CONTENTFUL_ACCESS_TOKEN,
-      })
-    : null;
+const BASE_URL = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master`;
 
-// Unified post interface matching the old SanityPost shape
+// Unified post interface
 export interface ContentfulPost {
   _id: string;
   _type: "blogPost" | "newsArticle" | "pressRelease";
@@ -27,31 +19,37 @@ export interface ContentfulPost {
   source?: string;
 }
 
-// Map Contentful content type IDs to our internal types
-const contentTypeMap: Record<string, ContentfulPost["_type"]> = {
-  blogPost: "blogPost",
-  newsArticle: "newsArticle",
-  pressRelease: "pressRelease",
-};
+async function fetchEntries(contentType: string, limit = 100, extraParams = ""): Promise<any> {
+  const url = `${BASE_URL}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=${contentType}&order=-fields.publishedAt&limit=${limit}&include=1${extraParams}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Contentful API error: ${res.status}`);
+  return res.json();
+}
 
-function mapEntry(entry: Entry<any>): ContentfulPost {
-  const fields = entry.fields as any;
-  const contentTypeId = entry.sys.contentType.sys.id;
+function resolveAssetUrl(asset: any): string | undefined {
+  if (!asset?.fields?.file?.url) return undefined;
+  return `https:${asset.fields.file.url}`;
+}
 
-  const coverAsset = fields.coverImage as Asset | undefined;
-  const coverUrl = coverAsset?.fields?.file?.url
-    ? `https:${(coverAsset.fields.file as any).url}`
-    : undefined;
+function mapEntry(item: any, includes: any): ContentfulPost {
+  const fields = item.fields;
+  const contentTypeId = item.sys.contentType.sys.id;
+
+  let coverImage: string | undefined;
+  if (fields.coverImage?.sys?.id && includes?.Asset) {
+    const asset = includes.Asset.find((a: any) => a.sys.id === fields.coverImage.sys.id);
+    coverImage = resolveAssetUrl(asset);
+  }
 
   return {
-    _id: entry.sys.id,
-    _type: contentTypeMap[contentTypeId] || "blogPost",
+    _id: item.sys.id,
+    _type: contentTypeId as ContentfulPost["_type"],
     title: fields.title || "",
     slug: { current: fields.slug || "" },
-    publishedAt: fields.publishedAt || entry.sys.createdAt,
+    publishedAt: fields.publishedAt || item.sys.createdAt,
     excerpt: fields.excerpt || "",
     body: fields.body || null,
-    coverImage: coverUrl,
+    coverImage,
     author: fields.author,
     categories: fields.categories,
     source: fields.source,
@@ -59,60 +57,50 @@ function mapEntry(entry: Entry<any>): ContentfulPost {
 }
 
 export async function getAllInsights(): Promise<ContentfulPost[]> {
-  if (!client) return [];
-  const entries = await client.getEntries({
-    content_type: "blogPost,newsArticle,pressRelease".split(",")[0], // fallback
-    order: ["-fields.publishedAt"],
-    limit: 100,
-  });
-
-  // Fetch all three types in parallel
+  if (!isConfigured()) return [];
   const [blogs, news, press] = await Promise.all([
-    client.getEntries({ content_type: "blogPost", order: ["-fields.publishedAt"], limit: 100 }),
-    client.getEntries({ content_type: "newsArticle", order: ["-fields.publishedAt"], limit: 100 }),
-    client.getEntries({ content_type: "pressRelease", order: ["-fields.publishedAt"], limit: 100 }),
+    fetchEntries("blogPost"),
+    fetchEntries("newsArticle"),
+    fetchEntries("pressRelease"),
   ]);
 
-  const all = [...blogs.items, ...news.items, ...press.items]
-    .map(mapEntry)
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  const all = [
+    ...blogs.items.map((i: any) => mapEntry(i, blogs.includes)),
+    ...news.items.map((i: any) => mapEntry(i, news.includes)),
+    ...press.items.map((i: any) => mapEntry(i, press.includes)),
+  ].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
   return all;
 }
 
 export async function getInsightsByType(type: string): Promise<ContentfulPost[]> {
-  if (!client) return [];
-  const entries = await client.getEntries({
-    content_type: type,
-    order: ["-fields.publishedAt"],
-    limit: 100,
-  });
-  return entries.items.map(mapEntry);
+  if (!isConfigured()) return [];
+  const data = await fetchEntries(type);
+  return data.items.map((i: any) => mapEntry(i, data.includes));
 }
 
 export async function getLatestInsights(limit = 3): Promise<ContentfulPost[]> {
-  if (!client) return [];
+  if (!isConfigured()) return [];
   const [blogs, news, press] = await Promise.all([
-    client.getEntries({ content_type: "blogPost", order: ["-fields.publishedAt"], limit }),
-    client.getEntries({ content_type: "newsArticle", order: ["-fields.publishedAt"], limit }),
-    client.getEntries({ content_type: "pressRelease", order: ["-fields.publishedAt"], limit }),
+    fetchEntries("blogPost", limit),
+    fetchEntries("newsArticle", limit),
+    fetchEntries("pressRelease", limit),
   ]);
 
-  return [...blogs.items, ...news.items, ...press.items]
-    .map(mapEntry)
+  return [
+    ...blogs.items.map((i: any) => mapEntry(i, blogs.includes)),
+    ...news.items.map((i: any) => mapEntry(i, news.includes)),
+    ...press.items.map((i: any) => mapEntry(i, press.includes)),
+  ]
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, limit);
 }
 
 export async function getPostBySlug(type: string, slug: string): Promise<ContentfulPost | null> {
-  if (!client) return null;
-  const entries = await client.getEntries({
-    content_type: type,
-    "fields.slug": slug,
-    limit: 1,
-  });
-  if (entries.items.length === 0) return null;
-  return mapEntry(entries.items[0]);
+  if (!isConfigured()) return null;
+  const data = await fetchEntries(type, 1, `&fields.slug=${slug}`);
+  if (data.items.length === 0) return null;
+  return mapEntry(data.items[0], data.includes);
 }
 
 export function isConfigured(): boolean {
