@@ -8,7 +8,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { InsightCard } from "@/components/insights/InsightCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllInsights, getInsightsByType, isConfigured } from "@/lib/sanity";
+import { getAllInsights, getInsightsByType, isConfigured } from "@/lib/contentful";
 
 const Insights = () => {
   const [activeTab, setActiveTab] = useState("all");

@@ -6,12 +6,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { RichTextRenderer } from "@/components/insights/RichTextRenderer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getPostBySlug, urlFor, isConfigured } from "@/lib/sanity";
+import { getPostBySlug, isConfigured } from "@/lib/contentful";
 
-const typeMap: Record<string, { sanityType: string; label: string; icon: any }> = {
-  blog: { sanityType: "blogPost", label: "Blog", icon: PenLine },
-  news: { sanityType: "newsArticle", label: "News", icon: Newspaper },
-  press: { sanityType: "pressRelease", label: "Press Release", icon: FileText },
+const typeMap: Record<string, { contentfulType: string; label: string; icon: any }> = {
+  blog: { contentfulType: "blogPost", label: "Blog", icon: PenLine },
+  news: { contentfulType: "newsArticle", label: "News", icon: Newspaper },
+  press: { contentfulType: "pressRelease", label: "Press Release", icon: FileText },
 };
 
 const InsightDetail = () => {
@@ -21,7 +21,7 @@ const InsightDetail = () => {
 
   const { data: post, isLoading } = useQuery({
     queryKey: ["insight", type, slug],
-    queryFn: () => getPostBySlug(config.sanityType, slug!),
+    queryFn: () => getPostBySlug(config.contentfulType, slug!),
     enabled: !!slug && !!config && configured,
   });
 
@@ -32,7 +32,6 @@ const InsightDetail = () => {
       <Navbar />
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-3xl">
-          {/* Back Link */}
           <Link
             to="/insights"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -67,18 +66,13 @@ const InsightDetail = () => {
             </div>
           ) : (
             <article>
-              {/* Type Badge */}
               <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
                 <Icon className="w-3.5 h-3.5" />
                 {config.label}
               </div>
-
-              {/* Title */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {post.title}
               </h1>
-
-              {/* Meta */}
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8">
                 {post.publishedAt && (
                   <span className="flex items-center gap-1.5">
@@ -93,20 +87,14 @@ const InsightDetail = () => {
                   </span>
                 )}
               </div>
-
-              {/* Cover Image */}
               {post.coverImage && (
                 <img
-                  src={urlFor(post.coverImage).width(800).height(450).url()}
+                  src={`${post.coverImage}?w=800&h=450&fit=fill`}
                   alt={post.title}
                   className="w-full rounded-xl mb-8"
                 />
               )}
-
-              {/* Body */}
               <RichTextRenderer content={post.body} />
-
-              {/* Source (for news) */}
               {post.source && (
                 <p className="mt-8 text-sm text-muted-foreground">
                   Source: <span className="text-foreground">{post.source}</span>
