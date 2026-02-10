@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { ArrowRight, Newspaper } from "lucide-react";
 import { motion } from "framer-motion";
-import { getLatestInsights, isConfigured } from "@/lib/sanity";
+import { getLatestInsights, isConfigured } from "@/lib/contentful";
 import { InsightCard } from "./InsightCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PageSection } from "@/components/layout/PageSection";
@@ -16,7 +16,6 @@ export const LatestInsights = () => {
     enabled: configured,
   });
 
-  // Don't render the section at all if Sanity isn't configured
   if (!configured) return null;
 
   return (
