@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import logoLight from "@/assets/logo-light.png";
+import logoDark from "@/assets/logo-dark.png";
 
 interface LogoProps {
   className?: string;
 }
 
 export const Logo = ({ className = "" }: LogoProps) => {
+  const { resolvedTheme } = useTheme();
+  const logoSrc = resolvedTheme === "dark" ? logoDark : logoLight;
+
   return (
     <Link to="/">
       <motion.div
@@ -13,10 +19,7 @@ export const Logo = ({ className = "" }: LogoProps) => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        {/* Gradient Accent Bar */}
-        <div className="w-1 h-10 rounded-full bg-gradient-to-b from-primary via-glow to-glow-purple" />
-        
-        {/* Text */}
+        <img src={logoSrc} alt="ICS Logo" className="h-10 w-10 object-contain" />
         <div className="flex flex-col">
           <span className="text-xl font-display font-bold tracking-tight text-foreground">
             Informatics
